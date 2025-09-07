@@ -1,24 +1,50 @@
 \documentclass[12pt]{article}
-\usepackage{amsmath, amssymb, graphicx, geometry, caption, subcaption}
-\usepackage[parfill]{parskip} % This gives the body non-indented, spaced paragraphs
-\usepackage[numbers]{natbib}
-\usepackage[most]{tcolorbox}
-\usepackage{float}
-\usepackage{hyperref}
 
-% TikZ and PGF libraries for physics-style diagrams
-\usepackage{ tikz, pgfplots}
-\usetikzlibrary{arrows.meta, calc, decorations.pathmorphing, decorations.pathreplacing, patterns, positioning}
+% Core math/graphics packages
+\usepackage{amsmath, amssymb, graphicx, geometry}
 
+% Figure and caption control
+\usepackage[font=small,labelfont=bf]{caption} % cleaner captions
+\usepackage{subcaption} % subfigures
 \captionsetup[subfigure]{justification=centering}
-\pgfplotsset{compat=1.16}
+
+% Paragraph spacing
+\usepackage[parfill]{parskip} % non-indented, spaced paragraphs
+
+% References
+\usepackage[numbers]{natbib}
+
+% Misc extras
+\usepackage{float}
+\usepackage{microtype} % improves justification/kerning
+
+% TikZ and PGF libraries
+\usepackage{tikz, pgfplots}
+\usetikzlibrary{arrows.meta, calc, decorations.pathmorphing,
+                decorations.pathreplacing, patterns, positioning}
+\pgfplotsset{compat=newest}
+
+% Page layout
 \geometry{margin=1in}
+
+% Hyperlinks and metadata
+\usepackage{hyperref}
+\hypersetup{
+    pdftitle={Discrete Standing Wave Spacetime: A Model of Emergent Geometry and Black Surfaces},
+    pdfauthor={Wayne Brassem},
+    pdfsubject={Cosmology, Discrete Spacetime, Gravity},
+    pdfkeywords={spacetime, standing wave, gravity, black surfaces, cosmology},
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
 
 \title{Discrete Standing Wave Spacetime: A Model of Emergent Geometry and Black Surfaces}
 \author{Wayne Brassem}
-%\date{}
 
 \begin{document}
+
 
 \maketitle
 
@@ -29,7 +55,7 @@ Gravity emerges not as an attractive force but as the universal tendency for mat
 
 This framework preserves the predictions of General Relativity and Quantum Mechanics while offering fresh explanations for black hole horizons (reframed as “Black Surfaces”), temporal evolution of the speed of light, early structure formation, and Hawking radiation. Temporal pressure gradients, variable $c(V)$, and the standing wave architecture together provide a coherent narrative that may unify apparent paradoxes in modern physics.
 
-Finally, by linking spacetime’s deep oscillatory structure to observable phenomena---from CMB anisotropies to gravitational echoes---the theory invites reconsideration of cosmic chronology, information retention, and the very nature of discreteness.
+By linking spacetime’s deep oscillatory structure to observable phenomena---from CMB anisotropies to gravitational echoes---the theory invites reconsideration of cosmic chronology, information retention, and the very nature of discreteness.
 
 \vspace{1em}
 
@@ -72,9 +98,10 @@ In an accelerating universe, we inhabit a strange and precarious observational m
 As it stands, modern cosmology describes three main eras. First, a brief and poorly understood \textbf{inflationary epoch}, during which the universe expanded faster than the speed of light~\citep{guth1981}. Then, a \textbf{matter-dominated era}, governed by the gravitational pull of baryonic and cold dark matter, leading to galaxy formation. Finally, our current era---the era of \textbf{accelerating expansion}, driven by Dark Energy. Each era is invoked to reconcile observation with theory, yet each also introduces profound and unresolved mysteries.
 
 
+\newpage
 \section{Event Horizons and the Limits of Knowledge}
 
-In the realm of quantum mechanics, one of its foundational postulates is that the wavefunction of a free particle is non-zero across all space \citep{libretexts_qm_postulates}. The probability distribution may diminish with distance, but it never fully vanishes---it pervades the entire universe. This assertion underlies the idea that quantum particles are fundamentally delocalized until measured or interacted with.
+In the realm of quantum mechanics, one of its foundational postulates is that the wavefunction of a free particle is non-zero across all space \citep{griffiths_qm}. The probability distribution may diminish with distance, but it never fully vanishes---it pervades the entire universe. This assertion underlies the idea that quantum particles are fundamentally delocalized until measured or interacted with.
 
 But this universal presence of the wavefunction seems to stand in direct contradiction with one of the most striking predictions of general relativity: the event horizon \citep{britannica_event_horizon, schwarzschild1916}. By definition, an event horizon is a surface beyond which no information, no signal---not even light---can escape to the outside universe. It marks the boundary of a black hole, and according to GR, anything that crosses this threshold is lost to the observable universe.
 
@@ -93,7 +120,8 @@ Moreover, black holes are not as featureless as they were once imagined. The no-
     \item \textbf{Charge}
 \end{itemize}
 
-This raises another striking question: \textit{If the internal structure of a black hole is a singularity---an infinitesimal point---how can it exhibit macroscopic properties like spin or charge?} How does a zero-volume point rotate? How does it possess a field?
+\newpage
+This raises another question: \textit{If the internal structure of a black hole is a singularity---an infinitesimal point---how can it exhibit macroscopic properties like spin or charge?} How does a zero-volume point rotate? How does it possess a field?
 
 These paradoxes hint that the singularity is not the end of the story, but rather the beginning of a deeper one. The properties we attribute to black holes may not emerge from an actual point of infinite density but from the structure of the spacetime wave itself---a standing wave compressed to its extreme, where geometry becomes a function of probability amplitude.
 
@@ -403,7 +431,7 @@ This change has immediate consequences. Proper time and conformal time must be c
 \end{equation}
 which alters the causal structure of the FRW spacetime. Horizons, particle communication limits, and light cone structures all evolve differently than in the constant-\(c\) case.
 
-\subsection{Einstein Equations with \(c(V)\)}
+\subsection{Einstein Equations with \texorpdfstring{$c(V)$}{c(V)}}
 
 The Einstein field equations,
 \begin{equation}
@@ -525,7 +553,7 @@ The FRW metric, once modified to include a variable speed of light, provides a n
 
 \section{Energy as the Universal Currency}
 
-\subsection{Lorentz Invariance and the Emergence of $c$}
+\subsection{Lorentz Invariance and the Emergence of \texorpdfstring{$c$}{c}}
 
 A natural objection to any theory with a variable speed of light is the possible violation of Lorentz invariance. The standing-wave spacetime model, however, preserves \emph{local} Lorentz symmetry while providing a physical basis for the emergence of $c$.
 
@@ -714,7 +742,7 @@ P &= \frac{1}{8\pi R} \left( \frac{1 - GM/R}{\sqrt{1 - 2GM/R}} - 1 \right),
 \end{align*}
 where \(\sigma\) is surface energy density and \(P\) the transverse pressure. As \(R \to 2GM\),  the shell mimics the Schwarzschild horizon, with \(\sigma\) and \(P\) diverging, reproducing the classical horizon location, but the interior remains flat---no singularity forms.
 
-\subsection{Rotating Black Surfaces: Oblate Shells and Kerr Exterior}
+\subsection{Rotating Black Surfaces: Oblate Shells and Kerr Metric}
 
 For rotation, the exterior Schwarzschild metric is replaced with the Kerr metric in Boyer--Lindquist coordinates:
 \begin{align*}
@@ -818,7 +846,7 @@ This dynamic naturally explains surface-area scaling and shell-like mass distrib
 
 \section{Observational and Experimental Consequences}
 
-If the discrete standing wave model is to be more than a mathematical curiosity, it must ultimately bear observable fruit. The replacement of black hole singularities with extended shell-like \emph{Black Surfaces} introduces sharp differences in both geometry and dynamics. These differences may leave detectable signatures across multiple observational channels.
+If the discrete standing wave model is to be more than a mathematical curiosity, it must leave its fingerprints on reality. Remarkably, several features long considered puzzles in the standard picture---from the ubiquity of supermassive black holes to the apparent acceleration of cosmic expansion---appear here as natural expectations. The following sections outline observational consequences, not as definitive predictions but as invitations to test the model against the cosmos itself.
 
 \subsection{Gravitational Wave Ringdowns and Echoes}
 
@@ -844,8 +872,7 @@ Infalling matter interacts differently with a hard surface than with an event ho
 
 Comparisons of accretion efficiencies between candidate black holes and neutron stars may already hint at such possibilities. High-resolution imaging (e.g., from the Event Horizon Telescope) could provide direct constraints.
 
-\newpage
-\subsection{Surface Oscillations and Quasinormal Mode Spectra}
+\subsection{Surface Oscillations and QNMs}
 
 The shell surface itself may host interface waves or pressure oscillations absent in classical horizons. These could couple to both gravitational and electromagnetic channels, producing:
 
@@ -854,9 +881,9 @@ The shell surface itself may host interface waves or pressure oscillations absen
     \item Modulations in post-merger signals.
 \end{itemize}
 
-Numerical relativity simulations incorporating matter shells would be required to quantify these spectra, but even qualitative deviations could be observationally testable.
+Where GR predicts silence beyond the standard QNM spectrum, a Black Surface acts as a resonant drumhead, inviting search for oscillatory fingerprints that classical horizons cannot provide.
 
-\subsection{Information Recovery and Interior Access}
+\subsection{Information and Interior Access}
 
 The absence of a singularity reframes the black hole information paradox. A Black Surface replaces the featureless horizon with a physical interface, introducing new possibilities for information retention and recovery:
 
@@ -866,11 +893,11 @@ The absence of a singularity reframes the black hole information paradox. A Blac
     \item Unlike ``firewall'' proposals, the surface offers a geometric rather than ad hoc resolution.
 \end{itemize}
 
-This discussion connects naturally to the proposal of ``soft hair'' by Hawking, Perry, and Strominger~\cite{hawking2016soft,hawking2018soft}, where information about infalling matter is stored in subtle supertranslation and superrotation charges on the horizon. While mathematically elegant, the soft-hair framework leaves open the question of what physical substrate actually carries these degrees of freedom, since the event horizon itself has no material form. In contrast, the Black Surface picture supplies a concrete boundary --- a shell at the limit of spacetime stretch --- on which such modes could reside. In this sense, the two ideas are complementary: soft hair provides the symmetry structure, while the Black Surface provides the physical seat.
+This connects naturally to the ``soft hair'' proposal of Hawking, Perry, and Strominger~\cite{hawking2016soft,hawking2018soft}, where information about infalling matter is stored in subtle supertranslation and superrotation charges on the horizon. While mathematically elegant, the soft-hair framework leaves open the question of what physical substrate actually carries these degrees of freedom, since the event horizon itself has no material form. In contrast, the Black Surface picture supplies a concrete boundary---a shell at the limit of spacetime stretch---on which such modes could reside. In this sense, the two ideas are complementary: soft hair provides the symmetry structure, while the Black Surface provides the physical seat.
 
-Together, these perspectives suggest that black holes (or their replacements) may not be information sinks but resonant, memory-bearing systems, where horizon-scale structures encode and possibly re-emit quantum information.
+Together, these perspectives suggest that black holes (or their replacements) may not be information sinks but resonant, memory-bearing systems, where horizon-scale structures encode and possibly re-emit quantum information. What appears paradoxical in standard GR becomes, in this framework, the expected behavior of a physical boundary.
 
-\subsection{Primordial Black Holes and Galactic Seeds}
+\subsection{Primordial Black Holes and Seeds}
 
 One striking observational fact is that nearly every galaxy hosts a supermassive black hole (SMBH) at its center. Their ubiquity is puzzling in standard cosmology: why should such rare, extreme objects become the rule rather than the exception?
 
@@ -883,7 +910,6 @@ was vastly larger in the early universe, gravity was overwhelmingly stronger at 
 As the universe expanded and $c(V)$ grew, the effective strength of gravity diminished. Black holes did not need to accrete to appear larger relative to their environment: the decreasing coupling itself ``ballooned'' their effective horizon scale. In this sense, supermassive black holes could emerge not only through feeding but through the natural weakening of gravity over time.
 
 Thus, the near-universal presence of SMBHs in galactic centers may not be an accident but a built-in feature of cosmic evolution. Billions of galaxies, each anchored by an early-formed compact seed, are a fossil record of gravity’s shifting strength. What seems exceptional in the standard picture becomes expected in a universe where gravity itself dilutes with volume.
-
 
 \subsection{Open Problems and Research Directions}
 
@@ -902,7 +928,7 @@ Together, these constitute perhaps the most testable implications of the discret
 
 If Part III set out the architecture of a discrete standing wave spacetime, and the previous section traced its observational fingerprints, the present section steps back. It asks not what the model \emph{predicts}, but what it \emph{requires}. The questions below are not failures but frontiers: invitations to mathematical refinement, physical insight, and perhaps even experimental discovery.
 
-\subsection{Does a Discrete Spacetime Demand a Reformulation of Quantum Mechanics?}
+\subsection{Is a Reformulation of Quantum Mechanics Required?}
 
 Quantum theory presumes a continuous background for wavefunction evolution, with time treated as a smooth parameter. If time instead emerges from an oscillatory, discrete substrate, can the Schrödinger equation still apply? Or must a new operator formalism be constructed, one adapted to a fundamentally discrete temporal flow?
 
@@ -910,27 +936,27 @@ Quantum theory presumes a continuous background for wavefunction evolution, with
 
 Here, gravity emerges not as a force but as a pressure gradient driven by temporal differentials. Yet a first-principles derivation remains absent. Is there a discrete analog to curvature, or to the stress-energy tensor, from which field equations can be derived? This is essential for a full reconciliation with general relativity.
 
-\subsection{What Role does a Higgs Field play in Resonant Spacetime?}
+\subsection{What Role does Higgs Field play?}
 
 If inertial mass results from impedance against spacetime oscillation, the Higgs mechanism may itself be secondary. Is the Higgs field simply another standing wave mode? If so, this could recast spontaneous symmetry breaking not as a brute fact, but as a resonance phenomenon within the fabric of spacetime.
 
-\subsection{Can Vacuum Energy Be Regularized by Discreteness?}
+\subsection{Can Vacuum Energy Be Regularized?}
 
-The vacuum energy catastrophe reflects a failure of continuum theory. In a discrete standing wave model, both a minimum frequency and a maximum warp depth exist. These natural cutoffs may eliminate infinitesimal mode contributions, suggesting a route to resolving the paradox.
+The vacuum energy catastrophe reflects a failure of continuum theory. In a discrete standing wave model, both a minimum frequency and a maximum warp depth exist. These natural cutoffs may eliminate infinitesimal mode contributions, suggesting a route to resolving the paradox. What appears catastrophic in the continuum may be regulated naturally by discreteness.
 
-\subsection{Is Cosmological Redshift Partially Misattributed?}
+\subsection{Is Redshift Partially Misattributed?}
 
-If $c = c(V)$, then cosmic redshift may not arise solely from metric expansion. Some fraction could reflect historical variation in $c$, lessening or removing the need for dark energy. The convexity of supernova Hubble plots may hint at precisely this effect.
+If $c = c(V)$, then cosmic redshift may not arise solely from metric expansion. Some fraction could reflect historical variation in $c$, lessening or removing the need for dark energy. The possible convexity of supernova Hubble plots may hint at precisely this effect. Thus, the very evidence once taken as proof of a cosmological constant may instead be the fossil record of a changing $c$.
 
 \subsection{How Does Information Escape a Black Surface?}
 
-Unlike an event horizon, a Black Surface is a finite shell. If the interior is not a true void, tunneling or resonant leakage may allow information escape, preserving unitarity without paradox. This raises the prospect of reconciling quantum mechanics with collapse without firewalls or singularities.
+Unlike an event horizon, a Black Surface is a finite shell. If the interior is not a true void, tunneling or resonant leakage may allow information escape, preserving unitarity without paradox. What appears impossible in GR---information recovery---becomes a natural consequence of a surface with physical structure.
 
-\subsection{Does Discreteness Imply a Preferred Scale or Frame?}
+\subsection{Does Discreteness Imply a Preferred Scale?}
 
 A fundamental oscillation frequency might define a cosmological frame, apparently at odds with relativity. Yet local Lorentz invariance may survive as an emergent property of the wave structure, just as fluid dynamics inherits Galilean symmetry despite molecular discreteness.
 
-\subsection{Is There a Boundary to the Universe or Its Wave Domain?}
+\subsection{Is There a Boundary to the Wave Domain?}
 
 A standing wave requires boundary conditions. What sets these in an expanding universe? Possibilities include holographic boundaries, topological closure, or embedding in a higher-dimensional domain. The observable universe may itself be only a subharmonic of a larger wave domain.
 
