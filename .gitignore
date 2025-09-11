@@ -1,9 +1,11 @@
-# LaTeX generated files
-*.aux
-*.log
-*.out
-*.toc
-*.bbl
-*.blg
-*.synctex.gz
-*.pdf
+# Python cache files
+src/__pycache__/
+src/*.pyc
+src/*.pyo
+src/*.pyd
+src/.venv/
+
+# Ignore everything in build except standing_wave.pdf and black_surface_formation.mp4
+build/*
+!build/standing_wave.pdf
+!build/black_surface_formation.mp4
