@@ -2,6 +2,23 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Build Figures + Video",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "${workspaceFolder}/src/black_surface.py",
+        "--save-snapshots"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/src"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": false
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "Build LaTeX PDF",
       "type": "shell",
       "command": "latexmk",

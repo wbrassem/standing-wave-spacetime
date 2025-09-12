@@ -155,10 +155,11 @@ def update(frame):
 
     fnum = frame + 1
     label = phase_labels.get(fnum, None)
-    if label:
-        ax.set_title(f"Formation Sequence: Frame {fnum}/{total_frames}\n{label}")
-    else:
-        ax.set_title(f"Formation Sequence: Frame {fnum}/{total_frames}")
+
+    # --- Video title logic ---
+    line1 = f"Formation Sequence: Frame {fnum}/{total_frames}"
+    line2 = label if label else " "
+    ax.set_title(f"{line1}\n{line2}")
 
     # Warp surface
     surf = ax.plot_surface(
@@ -184,7 +185,12 @@ def update(frame):
             fname = os.path.join(FIGURES_DIR, f"frame_{fnum:03d}_{slug}.pdf")
         else:
             fname = os.path.join(FIGURES_DIR, f"frame_{fnum:03d}.pdf")
+
+        # Temporarily clear title for LaTeX figures
+        current_title = ax.get_title()
+        ax.set_title("")
         plt.savefig(fname, bbox_inches="tight")
+        ax.set_title(current_title)  # restore for video
         print(f"Saved snapshot: {fname}")
 
     return surf, projection
