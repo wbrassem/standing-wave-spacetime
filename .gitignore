@@ -5,6 +5,12 @@ src/*.pyo
 src/*.pyd
 src/.venv/
 
+# Ignore everything in src except standing_wave.tex, references.bib and the python file
+src/*
+!src/standing_wave.tex
+!src/references.bib
+!src/black_surface.py
+
 # Ignore everything in build except standing_wave.pdf and black_surface_formation.mp4
 build/*
 !build/standing_wave.pdf
