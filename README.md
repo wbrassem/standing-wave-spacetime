@@ -51,8 +51,34 @@ This produces `build/standing_wave.pdf` just like the command line method.
 
 Create and activate a local Python virtual environment:
 
+On Mac:
 ```bash
-cd src
-python3 -m venv .venv
+python -m venv .venv
 source .venv/bin/activate
+```
+
+On Windows:
+```bash
+python -m venv .venv
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned
+.\.venv\Scripts\Activate.ps1
+```
+
+- Verify the Python path:
+
+```powershell
+Get-Command python
+Get-Command pip
+```
+
+- Confirm packages:
+
+```powershell
+pip list
+```
+
+Install the project python modules
+```powershell
+cd src
 pip install -r requirements.txt
+```

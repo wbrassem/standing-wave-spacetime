@@ -9,7 +9,6 @@
             "type": "debugpy",
             "request": "launch",
             "program": "src/black_surface.py",
-            "args": ["--save-snapshots"],
             "console": "integratedTerminal"
         }
     ]

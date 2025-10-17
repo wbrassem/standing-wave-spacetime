@@ -2,12 +2,11 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build Figures + Video",
+      "label": "Windows Build Figures + Video",
       "type": "shell",
-      "command": "python",
+      "command": "${workspaceFolder}/.venv/Scripts/python",
       "args": [
-        "${workspaceFolder}/src/black_surface.py",
-        "--save-snapshots"
+        "${workspaceFolder}/src/black_surface.py"
       ],
       "options": {
         "cwd": "${workspaceFolder}/src"
