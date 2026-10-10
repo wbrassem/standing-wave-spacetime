@@ -26,9 +26,22 @@ open StandingWave
 
 #check OscillatorState
 #check NormalizedRotation
-#check oscillator_energy
+#check oscillator_magnitude_sq
 #check compose_rotation
 #check inverse_rotation
+
+/-!
+## Quadratic Magnitude Verification
+
+Inspect the quadratic magnitude, its positive-definiteness
+properties, and its invariance under normalized rotations.
+-/
+
+#check StandingWave.oscillator_magnitude_sq_nonneg
+#check StandingWave.oscillator_magnitude_sq_eq_zero_iff
+#check StandingWave.oscillator_magnitude_sq_rotate
+#check StandingWave.apply_rotation_magnitude_sq
+#check StandingWave.rotate_sequence_magnitude_sq
 
 /-!
 ## Group Operations
@@ -54,13 +67,15 @@ open StandingWave
 #check Matrix.mem_specialOrthogonalGroup_fin_two_iff
 #print Matrix.mem_specialOrthogonalGroup_fin_two_iff
 
-#check Matrix.specialOrthogonalGroup
 #check Function.Injective
 #check Function.Surjective
 #check MulEquiv
 
 /-!
 ## Verification Experiments
+
+Check that the group operations can be used through
+their standard Mathlib interfaces.
 -/
 
 example (r₁ r₂ : NormalizedRotation) :
@@ -71,12 +86,16 @@ example (r : NormalizedRotation) :
     r⁻¹ * r = 1 := by
   exact inv_mul_cancel r
 
+example (r₁ r₂ r₃ : NormalizedRotation) :
+    (r₁ * r₂) * r₃ = r₁ * (r₂ * r₃) := by
+  exact mul_assoc r₁ r₂ r₃
+
 /-!
 ## SO(2) Group Isomorphism Verification
 
-Verify that the correspondence between our normalized
-rotations and the matrix special orthogonal group is
-available and preserves the group operations.
+Verify that the correspondence between normalized rotations
+and the matrix special orthogonal group is available and
+preserves the group operations.
 -/
 
 #check StandingWave.rotation_to_so2
@@ -119,12 +138,23 @@ example (r : NormalizedRotation) :
   exact normalized_rotation_equiv_so2.map_inv r
 
 /-!
-### Axiom Audit
+## Axiom Audit
+
+Inspect the logical dependencies of the principal results.
+
+The expected dependencies are standard foundational axioms
+used by Lean and Mathlib, rather than additional axioms
+introduced specifically for this development.
 -/
 
-#print axioms StandingWave.oscillator_energy_rotate
-#print axioms StandingWave.rotate_sequence_energy
+#print axioms StandingWave.oscillator_magnitude_sq_nonneg
+#print axioms StandingWave.oscillator_magnitude_sq_eq_zero_iff
+#print axioms StandingWave.oscillator_magnitude_sq_rotate
+#print axioms StandingWave.apply_rotation_magnitude_sq
+#print axioms StandingWave.rotate_sequence_magnitude_sq
+
 #print axioms StandingWave.compose_rotation_assoc
 #print axioms StandingWave.compose_rotation_comm
+
 #print axioms StandingWave.rotation_to_so2_mul
 #print axioms StandingWave.normalized_rotation_equiv_so2
