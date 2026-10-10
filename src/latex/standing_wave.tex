@@ -1,7 +1,7 @@
 \documentclass[12pt]{article}
 
 % Core math/graphics packages
-\usepackage{amsmath, amssymb, graphicx, geometry}
+\usepackage{amsmath, amsthm, amssymb, graphicx, geometry}
 
 % Figure and caption control
 \usepackage[font=small,labelfont=bf]{caption} % cleaner captions
@@ -12,14 +12,19 @@
 \usepackage[parfill]{parskip} % non-indented, spaced paragraphs
 
 % Graphics path
-\graphicspath{{../figures/}{./figures/}}
+\graphicspath{{figures/}{../../figures/}}
 
 % References
 \usepackage[numbers]{natbib}
 
 % Misc extras
 \usepackage{float}
+\usepackage{booktabs}
 \usepackage{microtype} % improves justification/kerning
+
+% Theorems and definitions
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
 
 % TikZ and PGF libraries
 \usepackage{tikz, pgfplots}
@@ -1110,7 +1115,7 @@ This order-of-magnitude consistency supports the interpretation of quasars as ``
 
 \newpage
 \bibliographystyle{unsrtnat}  % Updated to ensure citations are in appearance order
-\bibliography{references}
+\bibliography{src/latex/references}
 
 \end{document}
 

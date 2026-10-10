@@ -11,7 +11,7 @@ You may use any TeX editor (TeXShop, TeXworks, Overleaf, etc.) for local develop
 From the repository root, run:
 
 ```bash
-latexmk -pdf -interaction=nonstopmode -output-directory=build src/standing_wave.tex
+latexmk -pdf -interaction=nonstopmode -output-directory=build src/latex/standing_wave.tex
 ```
 
 ### VS Code Build Task (Alternative)

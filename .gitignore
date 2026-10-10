@@ -1,17 +1,25 @@
-# Python cache files
-src/__pycache__/
-src/*.pyc
-src/*.pyo
-src/*.pyd
-src/.venv/
+# Python
+.venv/
+__pycache__/
+*.py[cod]
 
-# Ignore everything in src except standing_wave.tex, references.bib and the python file
-src/*
-!src/standing_wave.tex
-!src/references.bib
-!src/black_surface.py
+# Lean / Lake
+.lake/
 
-# Ignore everything in build except standing_wave.pdf and black_surface_formation.mp4
+# LaTeX intermediate files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Build artifacts
 build/*
 !build/standing_wave.pdf
 !build/black_surface_formation.mp4
