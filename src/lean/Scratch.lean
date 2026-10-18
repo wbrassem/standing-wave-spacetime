@@ -6,6 +6,8 @@ Authors: Wayne Brassem
 
 import Mathlib
 import StandingWave.Oscillator
+import StandingWave.Coupling
+import StandingWave.Locality
 
 /-!
 # Standing Wave — Scratch
@@ -138,6 +140,78 @@ example (r : NormalizedRotation) :
   exact normalized_rotation_equiv_so2.map_inv r
 
 /-!
+## Pairwise Oscillator Coupling Examples
+
+Explore concrete instances of interactions between two
+oscillator states.
+
+These examples illustrate redistribution of quadratic
+magnitude under normalized mixing. They are computational
+checks rather than general conservation theorems.
+
+The underlying conservation properties are established
+in `StandingWave.Coupling`.
+-/
+
+/-
+### Complete Magnitude Redistribution
+
+Normalized mixing with coefficients (0, 1) transfers
+the entire quadratic magnitude from the first oscillator
+to the second.
+
+The combined quadratic magnitude remains conserved.
+-/
+example :
+    let r : NormalizedRotation :=
+      ⟨0, 1, by norm_num⟩
+    let A : OscillatorState := ⟨1, 0⟩
+    let B : OscillatorState := ⟨0, 0⟩
+    let output := mix_oscillators r (A, B)
+    oscillator_magnitude_sq output.1 = 0 ∧
+      oscillator_magnitude_sq output.2 = 1 ∧
+      combined_magnitude_sq output.1 output.2 =
+        combined_magnitude_sq A B := by
+  norm_num [mix_oscillators, oscillator_magnitude_sq,
+    combined_magnitude_sq]
+
+/-
+### Partial Magnitude Redistribution
+
+Normalized mixing with coefficients (3/5, 4/5)
+redistributes the initial unit quadratic magnitude
+between both oscillator states.
+
+The resulting individual magnitudes are 9/25 and
+16/25, while their combined magnitude remains one.
+
+Neither output oscillator has zero magnitude.
+-/
+example :
+    let r : NormalizedRotation :=
+      ⟨3 / 5, 4 / 5, by norm_num⟩
+    let A : OscillatorState := ⟨1, 0⟩
+    let B : OscillatorState := ⟨0, 0⟩
+    let output := mix_oscillators r (A, B)
+    oscillator_magnitude_sq output.1 = 9 / 25 ∧
+      oscillator_magnitude_sq output.2 = 16 / 25 ∧
+      combined_magnitude_sq output.1 output.2 =
+        combined_magnitude_sq A B := by
+  norm_num [mix_oscillators, oscillator_magnitude_sq,
+    combined_magnitude_sq]
+
+/-!
+## Oscillator Interaction Monoid Examples
+
+Check that the standard monoid interface is available
+for oscillator interactions.
+-/
+
+example (F G H : OscillatorInteraction) :
+    (F * G) * H = F * (G * H) := by
+  exact mul_assoc F G H
+
+/-!
 ## Axiom Audit
 
 Inspect the logical dependencies of the principal results.
@@ -158,3 +232,10 @@ introduced specifically for this development.
 
 #print axioms StandingWave.rotation_to_so2_mul
 #print axioms StandingWave.normalized_rotation_equiv_so2
+
+#print axioms StandingWave.execute_history_eq_of_equivalent
+#print axioms StandingWave.history_equivalent_has_precedence_equiv
+
+#print axioms StandingWave.mix_oscillators_conserves
+#print axioms StandingWave.scale_half_exhibits_loss
+#print axioms StandingWave.conservative_interactions_lt_nonincreasing
