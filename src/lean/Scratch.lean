@@ -8,6 +8,7 @@ import Mathlib
 import StandingWave.Oscillator
 import StandingWave.Coupling
 import StandingWave.Locality
+import StandingWave.CausalDistance
 
 /-!
 # Standing Wave — Scratch
@@ -239,3 +240,19 @@ introduced specifically for this development.
 #print axioms StandingWave.mix_oscillators_conserves
 #print axioms StandingWave.scale_half_exhibits_loss
 #print axioms StandingWave.conservative_interactions_lt_nonincreasing
+
+#print axioms StandingWave.interaction_hop_distance_triangle
+#print axioms StandingWave.execute_history_difference_bounded_by_length
+#print axioms StandingWave.execute_history_single_source_no_influence_beyond_length
+#print axioms StandingWave.execute_history_difference_support_subset_ball
+
+-- CausalDistance: structural connectivity
+#print axioms StandingWave.interaction_reachable_equivalence
+#print axioms StandingWave.execute_history_no_cross_component_influence
+
+-- CausalDistance: extended metric
+#print axioms StandingWave.interaction_hop_distance_eq_zero_iff
+#print axioms StandingWave.interaction_hop_distance_eq_top_iff
+
+-- CausalDistance: one-event propagation
+#print axioms StandingWave.apply_admissible_event_difference_within_one_hop

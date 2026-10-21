@@ -7,3 +7,4 @@ Authors: Wayne Brassem
 import StandingWave.Oscillator
 import StandingWave.Coupling
 import StandingWave.Locality
+import StandingWave.CausalDistance
