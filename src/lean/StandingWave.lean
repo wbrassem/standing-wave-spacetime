@@ -4,7 +4,5 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Wayne Brassem
 -/
 
-import StandingWave.Oscillator
-import StandingWave.Coupling
-import StandingWave.Locality
 import StandingWave.CausalDistance
+import StandingWave.JointModes

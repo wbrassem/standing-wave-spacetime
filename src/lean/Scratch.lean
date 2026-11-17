@@ -4,11 +4,8 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Wayne Brassem
 -/
 
-import Mathlib
-import StandingWave.Oscillator
-import StandingWave.Coupling
-import StandingWave.Locality
 import StandingWave.CausalDistance
+import StandingWave.JointModes
 
 /-!
 # Standing Wave — Scratch
@@ -212,6 +209,96 @@ example (F G H : OscillatorInteraction) :
     (F * G) * H = F * (G * H) := by
   exact mul_assoc F G H
 
+/- JointModes verification -/
+
+/-!
+## Scratch Experiment: Two Different Phase Flips
+
+Starting with the separable matrix
+
+    M = !![4, 6; 2, 3]
+
+we first negate the lower-right entry (d).
+
+This produces a nonseparable state.
+
+We then negate the upper-right entry (b),
+without undoing the first flip.
+
+The resulting state is again separable,
+although it is not equal to the original state.
+-/
+
+section DoubleFlipExperiment
+
+open StandingWave
+
+-- The initial separable state.
+private noncomputable def walkM : JointModeState :=
+  !![4, 6; 2, 3]
+
+-- Negate entry b = M 0 1.
+private def walkFlipB (M : JointModeState) :
+    JointModeState :=
+  fun i j =>
+    if i = 0 ∧ j = 1 then -(M i j) else M i j
+
+-- First negate d, using our existing operation.
+private noncomputable def walkAfterD : JointModeState :=
+  joint_mode_phase_flip walkM
+
+-- Then negate b, leaving d negative.
+private noncomputable def walkAfterDB : JointModeState :=
+  walkFlipB walkAfterD
+
+-- Initial determinant: 12 - 12 = 0.
+example : Matrix.det walkM = 0 := by
+  norm_num [Matrix.det_fin_two, walkM]
+
+-- After flipping d: -12 - 12 = -24.
+example : Matrix.det walkAfterD = -24 := by
+  norm_num [Matrix.det_fin_two, walkAfterD,
+    joint_mode_phase_flip, walkM]
+
+-- After also flipping b: -12 - (-12) = 0.
+example : Matrix.det walkAfterDB = 0 := by
+  norm_num [Matrix.det_fin_two, walkAfterDB,
+    walkFlipB, walkAfterD,
+    joint_mode_phase_flip, walkM]
+
+-- The original state is separable.
+example : joint_mode_separable walkM := by
+  apply (joint_mode_separable_iff_det_eq_zero walkM).2
+  norm_num [Matrix.det_fin_two, walkM]
+
+-- The state after one flip is nonseparable.
+example : ¬ joint_mode_separable walkAfterD := by
+  intro h
+  have hdet :=
+    (joint_mode_separable_iff_det_eq_zero walkAfterD).1 h
+  norm_num [Matrix.det_fin_two, walkAfterD,
+    joint_mode_phase_flip, walkM] at hdet
+
+-- The state after two DIFFERENT flips is separable.
+example : joint_mode_separable walkAfterDB := by
+  apply (joint_mode_separable_iff_det_eq_zero walkAfterDB).2
+  norm_num [Matrix.det_fin_two, walkAfterDB,
+    walkFlipB, walkAfterD,
+    joint_mode_phase_flip, walkM]
+
+-- But the final state is NOT the original matrix.
+example : walkAfterDB ≠ walkM := by
+  intro h
+  have hb :=
+    congrArg (fun M : JointModeState => M 0 1) h
+  norm_num [walkAfterDB, walkFlipB, walkAfterD,
+    joint_mode_phase_flip, walkM] at hb
+
+end DoubleFlipExperiment
+
+#check StandingWave.joint_mode_flip_sequence_odd_separable_iff
+#check StandingWave.joint_mode_mix_oscillators_det
+
 /-!
 ## Axiom Audit
 
@@ -256,3 +343,7 @@ introduced specifically for this development.
 
 -- CausalDistance: one-event propagation
 #print axioms StandingWave.apply_admissible_event_difference_within_one_hop
+
+-- JointModes: joint mode
+#print axioms StandingWave.joint_mode_flip_sequence_odd_separable_iff
+#print axioms StandingWave.joint_mode_mix_oscillators_det
